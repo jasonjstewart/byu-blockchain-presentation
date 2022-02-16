@@ -13,6 +13,7 @@ contract BYUToken is ERC20 {
     address[] students;
     mapping(string => address) studentsAddress;
     address owner;
+    uint256 payment;
 
     //functions
     function addStudent(string memory name) public {
@@ -26,7 +27,7 @@ contract BYUToken is ERC20 {
 
     function payAllStudents() public {
         require(msg.sender==owner,"Must be owner to pay all the students");
-        _mint(address(this), students.length);
+        _mint(address(this), students.length*payment);
         for (uint256 index = 0; index < students.length; index++) {
             transfer(students[index], 1);
         }
