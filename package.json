@@ -1,0 +1,22 @@
+{
+  "name": "byu-blockchain-presentation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jasonjstewart/blockchain-wordle.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jasonjstewart/blockchain-wordle/issues"
+  },
+  "homepage": "https://github.com/jasonjstewart/blockchain-wordle#readme",
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.5.0"
+  }
+}

@@ -1,1 +1,1 @@
-# blockchain-wordle
+# simple-contract
