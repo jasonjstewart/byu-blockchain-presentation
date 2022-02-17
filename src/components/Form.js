@@ -9,25 +9,28 @@ export default function Form() {
   const [smartContract, setSmartContract] = useState();
 
   useEffect(()=>{
-    const smartContractAddress = "0xC1Ebf03B6130E02ADb9ca9279CE548A174bd6649";
-    const signer = (new ethers.providers.Web3Provider(window.ethereum)).getSigner()
-    
-    const smartContract = new ethers.Contract(smartContractAddress, ABI, signer);
+    if(window.ethereum){
+      const smartContractAddress = "0xC1Ebf03B6130E02ADb9ca9279CE548A174bd6649";
+      const signer = (new ethers.providers.Web3Provider(window.ethereum)).getSigner()
+      
+      const smartContract = new ethers.Contract(smartContractAddress, ABI, signer);
 
-    setSmartContract(smartContract);
+      setSmartContract(smartContract);
+    }
   },[])
   
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       await smartContract.addStudent(name);
+      alert("Name has been submitted.")
+      setName("")
+      document.getElementById("fullname").reset();
     }
     catch (err){
       alert(err.data.message)
     }
-    alert("Name has been submitted.")
-    setName("")
-    document.getElementById("fullname").reset();
+
   }
 
   return (
@@ -73,7 +76,25 @@ export default function Form() {
           </form>
           <div>
               <h2>
-                {smartContract ? smartContract.address : null}
+              Smart Contract Address:
+              <a
+                  href="https://testnet.snowtrace.io/address/0xC1Ebf03B6130E02ADb9ca9279CE548A174bd6649"
+                  target="_blank"
+                  className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md hover:bg-blue-200 md:py-4 md:text-lg md:px-10"
+              >
+                 {smartContract ? smartContract.address : null}
+                </a>
+              </h2>
+            </div>
+            <div className="pt-100">
+              <h2>
+              <a
+                  href="https://docs.google.com/presentation/d/1aU_Lscb9HZoCM0AGMJTu5Ah4F2tOUctBlSK5zBkjFIo/edit?usp=sharing"
+                  target="_blank"
+                  className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md hover:bg-blue-200 md:py-4 md:text-lg md:px-10"
+              >
+                 Presentation Link
+                </a>
               </h2>
             </div>
         </div>
