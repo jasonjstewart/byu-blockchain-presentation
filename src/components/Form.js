@@ -73,7 +73,7 @@ export default function Form() {
           </form>
           <div>
               <h2>
-                {smartContract.address}
+                {smartContract ? smartContract.address : null}
               </h2>
             </div>
         </div>
